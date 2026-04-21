@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Global Uni Dashboard - Student Edition</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+    <style>
+        body { font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; margin: 0; background-color: #f4f7f6; color: #333; }
+        header { background: #2c3e50; color: white; padding: 2rem; text-align: center; }
+        .container { max-width: 1200px; margin: 2rem auto; padding: 0 1rem; }
+        .controls { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); margin-bottom: 2rem; display: flex; gap: 20px; align-items: center; }
+        .dashboard-grid { display: grid; grid-template-columns: 2fr 1fr; gap: 20px; }
+        .card { background: white; padding: 1.5rem; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.1); }
+        h2 { color: #2980b9; margin-top: 0; }
+        select { padding: 10px; border-radius: 5px; border: 1px solid #ddd; }
+        .stat-box { background: #ecf0f1; padding: 1rem; margin-bottom: 1rem; border-left: 5px solid #2980b9; }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Global University Rankings Dashboard</h1>
+    <p>Finding "Hidden Gems" for Future Students</p>
+</header>
+
+<div class="container">
+    <div class="controls">
+        <strong>Strategy Mode:</strong>
+        <select id="modeSelect">
+            <option value="prestige">Prestige Focus (QS Dominant)</option>
+            <option value="performance">Performance Focus (THE Research Dominant)</option>
+            <option value="industry">Career Focus (Industry Impact)</option>
+        </select>
+        <span>(Interactive Filter based on Lecture 9 principles)</span>
+    </div>
+
+    <div class="dashboard-grid">
+        <div class="card">
+            <h2>The "Hidden Gems" Explorer</h2>
+            <div id="plot" style="height: 500px;"></div>
+            <p><i>Note: Interactive scatter plot identifying universities with high research quality but lower prestige cost.</i></p>
+        </div>
+        
+        <div class="card">
+            <h2>Student Insights</h2>
+            <div id="insights">
+                <div class="stat-box">
+                    <strong>Trend:</strong> Asian Universities have doubled their Top 200 presence since 2016.
+                </div>
+                <div class="stat-box" id="dynamic-insight">
+                    <strong>Prestige Warning:</strong> Large universities often get a "Ranking Bonus" regardless of per-capita quality.
+                </div>
+            </div>
+            <h3>Top Recommendations</h3>
+            <ul id="uni-list">
+                <li>Analyzing data...</li>
+            </ul>
+        </div>
+    </div>
+</div>
+
+<script>
+    // Mock data based on project analysis
+    const data = {
+        prestige: { x: [80, 90, 85, 95], y: [70, 85, 75, 90], labels: ['Harvard', 'Oxford', 'Stanford', 'MIT'], title: 'The Old Guard (Stable Elite)' },
+        performance: { x: [20, 35, 40, 30], y: [85, 90, 88, 92], labels: ['Tsinghua', 'NUS', 'HKU', 'KAIST'], title: 'Performance Leaders (Hidden Gems)' },
+        industry: { x: [30, 40, 35, 25], y: [99, 98, 97, 99], labels: ['NCU Taiwan', 'Bilkent', 'Nanjing Aero', 'Tokushima'], title: 'Industry Engines (Employability)' }
+    };
+
+    function updatePlot(mode) {
+        const trace = {
+            x: data[mode].x,
+            y: data[mode].y,
+            mode: 'markers+text',
+            text: data[mode].labels,
+            textposition: 'top center',
+            marker: { size: 12, color: '#2980b9' },
+            type: 'scatter'
+        };
+
+        const layout = {
+            title: data[mode].title,
+            xaxis: { title: mode === 'prestige' ? 'Reputation Score' : 'QS Brand Rank' },
+            yaxis: { title: mode === 'industry' ? 'Industry Impact (Patents)' : 'Research Quality (THE)' }
+        };
+
+        Plotly.newPlot('plot', [trace], layout);
+        
+        // Update list
+        const list = document.getElementById('uni-list');
+        list.innerHTML = data[mode].labels.map(name => `<li>${name} - Recommended</li>`).join('');
+    }
+
+    document.getElementById('modeSelect').addEventListener('change', (e) => {
+        updatePlot(e.target.value);
+    });
+
+    // Initial load
+    updatePlot('prestige');
+</script>
+
+</body>
+</html>
