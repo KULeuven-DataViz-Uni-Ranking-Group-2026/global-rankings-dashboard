@@ -3,6 +3,8 @@
 
 Decode global university rankings with our interactive data visualization dashboard! By comparing **Times Higher Education (THE)** and **QS** datasets alongside **World Bank** economic data, we expose "prestige bias" to help prospective students find high-value "Hidden Gems" based on true research and career impact, rather than just historical brand names.
 
+🚀 **Live Interactive Dashboard Prototype:** [View the Interactive Dashboard Here](https://KULeuven-DataViz-Uni-Ranking-Group-2026.github.io/intermediate-group-presentations/dashboard/interactive-dashboard.html)
+
 🚀 **Live Dashboard Prototype:** [View the Midterm Report Here](https://KULeuven-DataViz-Uni-Ranking-Group-2026.github.io/intermediate-group-presentations/dashboard/midterm-report.html)
 
 ## 👥 Team Members
