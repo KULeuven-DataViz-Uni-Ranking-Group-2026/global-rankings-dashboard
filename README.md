@@ -33,7 +33,41 @@ To keep our collaboration clean and organized, please place your files in the co
 ## 📝 Development & Changelog
 *A log to track major project milestones and backend updates.*
 
+**[27 April 2026] - Interactive Dashboard & Web Conversion (YIN Renlong)**
+
+* Refactored all static Seaborn/Matplotlib charts into interactive **Plotly Express** web visualizations.
+* Implemented "details-on-demand" interaction techniques (hover tooltips) allowing users to see specific university names, ranks, and countries across all datasets.
+* Added programmatic static text labels to the GDP scatter plot to instantly highlight key geopolitical outliers (e.g., China, US) without relying on mouse interaction.
+* Rewrote the project introduction to explicitly target prospective students and align with HCI/DataViz course terminology (Gestalt principles, graphical perception).
+* Integrated a formal academic bibliography to mathematically justify our visual design choices.
+* Muted all backend API and loading bar (`tqdm`) warnings via the Python `warnings` library to ensure a flawless frontend UI.
+* Renamed the core Jupyter Notebook to `DataViz-intermediate-interactive-dashboard.ipynb` for clear team organization.
+* Engineered a terminal-based conversion pipeline using `nbconvert` to transform the Python notebook into a pristine, code-hidden, interactive HTML webpage.
+
+
+
+## 🛠️ How to Update the Interactive Dashboard (For Team Members)
+
+If anyone on the team wants to edit the graphs, change the text, or update the analysis, you do not need to edit the HTML directly! Just follow this simple pipeline:
+
+1. **Pull the latest code:** Make sure your local folder is up to date (`git pull origin main`).
+
+2. **Edit the Notebook:** Open `DataViz-intermediate-interactive-dashboard.ipynb` in your local Jupyter environment or VS Code. Make your changes and save the file.
+
+3. **Generate the Webpage:** Open your Terminal, navigate to the folder containing the notebook, and run this exact command:
+
+   ```bash
+   jupyter nbconvert --to html --execute --no-input --output interactive-dashboard.html DataViz-intermediate-interactive-dashboard.ipynb
+   ```
+
+*(Note: --execute runs the code fresh, --no-input hides the python code, and --output automatically names the file).*
+
+4. **Push to GitHub:** Add, commit, and push both the .ipynb and the new .html file. The website updates in 2 minutes!
+
+
+
 **[22 April 2026] - Midterm Preparation & Architecture (YIN Renlong)**
+
 * Set up the GitHub repository architecture and team collaboration folders.
 * Integrated the World Bank API to map live GDP per capita to university rankings.
 * Generated exploratory Data Analysis graphs (Seaborn) proving the "Prestige vs. Performance" gap and the "China Outlier" GDP trend.
@@ -43,3 +77,6 @@ To keep our collaboration clean and organized, please place your files in the co
 
 **[21 April 2026] - Initial Prototype (Victor Kao)**
 * Pushed initial interactive HTML dashboard prototype for midterm feedback.
+
+---
+
