@@ -89,7 +89,7 @@ If anyone on the team wants to edit the graphs, change the text, or update the a
 3. **Generate the Webpage:** Open your Terminal, navigate to the folder containing the notebook, and run this exact command:
 
    ```bash
-   jupyter nbconvert --to html --execute --no-input --output interactive-dashboard.html DataViz-intermediate-interactive-dashboard.ipynb
+   jupyter nbconvert --to html --execute --no-input --output interactive-dashboard.html DataViz-interactive-dashboard.ipynb
    ```
 
 *(Note: --execute runs the code fresh, --no-input hides the python code, and --output automatically names the file).*
